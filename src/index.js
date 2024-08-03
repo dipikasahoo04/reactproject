@@ -1,14 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import ReactDOM from 'react-dom/client';
+import './index.css';
 import App from './App';
+import { BrowserRouter as Router } from 'react-router-dom';
+import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
-  <Router basename={process.env.PUBLIC_URL}>
-    <Switch>
-      <Route path="/" component={App} />
-      {/* Add other routes here */}
-    </Switch>
-  </Router>,
-  document.getElementById('root')
+// Get the base URL from the environment variable (for GitHub Pages)
+const basename = process.env.PUBLIC_URL || '/';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <Router basename={basename}>
+      <App />
+    </Router>
+  </React.StrictMode>
 );
+
+reportWebVitals();
